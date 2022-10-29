@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 // plugins
 import { useNavigate } from 'react-router-dom';
 // context
@@ -11,7 +10,6 @@ import styles from './header.module.css';
 
 function Header() {
   const navigate = useNavigate();
-  const routeToShow = ['Collections', 'Men', 'Women', 'About', 'Contact'];
 
   return (
     <header className={styles.header}>

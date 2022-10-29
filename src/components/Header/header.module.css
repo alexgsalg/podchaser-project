@@ -1,0 +1,22 @@
+.header {
+  width: 100%;
+  padding: 1.25rem;
+  background-image: linear-gradient(to right, var(--purple), var(--blue-dark));
+}
+
+.header_container {
+  max-width: var(--bp-desktop-lg);
+  width: 100%;
+  margin: 0 auto;
+}
+
+.header_logo {
+  max-height: 2.5rem;
+  max-width: 12.25rem;
+}
+
+.header_logo svg {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}

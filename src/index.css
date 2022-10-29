@@ -1,18 +1,23 @@
 @font-face {
   font-family: 'Avalon';
-  src: local('Avalon'), url(./assets/fonts/Avalon.woff) format('woff');
-  src: local('Avalon'), url(./assets/fonts/Avalon.ttf) format('ttf');
+  src: local('Avalon'), local('AvalonPlain'),
+      url('./src/assets/fonts/Avalon.woff') format('woff'),
+      url('./src/assets/fonts/Avalon.ttf') format('truetype');
+  font-weight: normal;
 }
+
 @font-face {
-  font-family: 'Avalon-bold';
-  src: local('Avalon-bold'), url(./assets/fonts/Avalon-Medium-Bold.woff) format('woff');
-  src: local('Avalon-bold'), url(./assets/fonts/Avalon-Medium-Bold.ttf) format('ttf');
+  font-family: 'Avalon';
+  src: local('Avalon Medium Bold'), local('Avalon-Bold'),
+      url('./src/assets/fonts/Avalon-Bold.woff') format('woff'),
+      url('./src/assets/fonts/Avalon-Bold.ttf') format('truetype');
+  font-weight: 500;
 }
 
 :root {
   /* Font */
-  --font-default: 'Avalon-bold', Avenir, Helvetica, Arial, sans-serif;
-  --font-bold: 'Avalon-bold', Avenir, Helvetica, Arial, sans-seri;
+  --font-default: Avalon, Avenir, Helvetica, Arial, sans-serif;
+  --font-bold: Avalon-bold, Avenir, Helvetica, Arial, sans-seri;
   font-family: var(--font-default);
   font-size: 1rem;
   line-height: 1.6em;
@@ -25,18 +30,21 @@
   -webkit-text-size-adjust: 100%;
 
   /* Primary Colors */
-  --orange: hsl(26, 100%, 55%);
-  --orange-light: hsl(25, 100%, 94%);
+  --purple: hsl(296, 96%, 26%);
+  --pink: hsl(336, 96%, 49%);
+  --blue-dark: hsl(259, 78%, 26%);
 
   /* Neutral Colors */
-  --blue-darker: hsl(220, 13%, 13%);
-  --blue-grayish-dark: hsl(219, 9%, 45%);
-  --blue-grayish: hsl(220, 14%, 75%);
-  --blue-grayish-light: hsl(223, 64%, 98%);
-  --blue-grayish-opacity: hsla(220, 14%, 75%, 0.5);
   --white: hsl(0, 0%, 100%);
   --black: hsl(0, 0%, 0%);
   --black-opacity: hsla(0, 0%, 0%, 0.75);
+  
+  /* Grid Breakpoints */
+  --bp-phone: 30rem;
+  --bp-tablet: 48rem;
+  --bp-desktop-md: 64rem;
+  --bp-desktop-lg: 75rem;
+  /* --bp-desktop-xl: 1200px; */
 }
 
 /* Helper Classes */
