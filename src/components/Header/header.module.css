@@ -5,9 +5,7 @@
 }
 
 .header_container {
-  max-width: var(--bp-desktop-lg);
-  width: 100%;
-  margin: 0 auto;
+  composes: general_container from './src/index.css';
 }
 
 .header_logo {

@@ -1,25 +1,25 @@
 @font-face {
-  font-family: 'Avalon';
-  src: local('Avalon'), local('AvalonPlain'),
-      url('./src/assets/fonts/Avalon.woff') format('woff'),
-      url('./src/assets/fonts/Avalon.ttf') format('truetype');
+  font-family: 'Avalon-book';
+  src: local('Avalon Book'), local('AvalonBook'),
+      url('./src/assets/fonts/Avalon-Book.woff') format('woff'),
+      url('./src/assets/fonts/Avalon-Book.ttf') format('truetype');
   font-weight: normal;
 }
 
 @font-face {
-  font-family: 'Avalon';
-  src: local('Avalon Medium Bold'), local('Avalon-Bold'),
+  font-family: 'Avalon-bold';
+  src: local('Avalon Bold'), local('AvalonBold'),
       url('./src/assets/fonts/Avalon-Bold.woff') format('woff'),
       url('./src/assets/fonts/Avalon-Bold.ttf') format('truetype');
-  font-weight: 500;
+  font-weight: 600;
 }
 
 :root {
   /* Font */
-  --font-default: Avalon, Avenir, Helvetica, Arial, sans-serif;
+  --font-default: Avalon-book, Avenir, Helvetica, Arial, sans-serif;
   --font-bold: Avalon-bold, Avenir, Helvetica, Arial, sans-seri;
   font-family: var(--font-default);
-  font-size: 1rem;
+  font-size: 16px;
   line-height: 1.6em;
   font-weight: 400;
 
@@ -40,14 +40,20 @@
   --black-opacity: hsla(0, 0%, 0%, 0.75);
   
   /* Grid Breakpoints */
-  --bp-phone: 30rem;
-  --bp-tablet: 48rem;
-  --bp-desktop-md: 64rem;
-  --bp-desktop-lg: 75rem;
-  /* --bp-desktop-xl: 1200px; */
+  --bp-phone: 480px;
+  --bp-tablet: 768px;
+  --bp-desktop-md: 1024px;
+  --bp-desktop-lg: 1200px;
+  /* --bp-desktop-xl: 75rem; */
 }
 
 /* Helper Classes */
+.general_container {
+  max-width: var(--bp-desktop-lg);
+  width: 100%;
+  margin: 0 auto;
+}
+
 .flex_Jend_Acenter {
   display: flex;
   justify-content: flex-end;

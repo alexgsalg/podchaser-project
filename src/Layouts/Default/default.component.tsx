@@ -3,18 +3,19 @@ import React, { Fragment } from 'react';
 import { Outlet } from 'react-router-dom';
 // context
 // components
-import Header from '../components/Header/header.component';
+import Header from '../../components/Header/header.component';
 // imports
 // images
 // styles
+import styles from './default.module.css';
 
 function DefaultLayout() {
   return (
     <Fragment>
       <Header />
 
-      <main className='main'>
-        <div className='main_container'>
+      <main className={styles.main}>
+        <div className={styles.main_container}>
           <Outlet />
         </div>
       </main>
