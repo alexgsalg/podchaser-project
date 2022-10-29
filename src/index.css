@@ -45,6 +45,12 @@
   --bp-desktop-md: 1024px;
   --bp-desktop-lg: 1200px;
   /* --bp-desktop-xl: 75rem; */
+
+  --gutter-sm: 0.75rem;
+  --gutter-md: 1.375rem;
+  --gutter-lg: 2.5rem;
+
+  --grid-1: calc( (100% - ( var(--gutter-sm) * 11 ) ) / 12 );
 }
 
 /* Helper Classes */

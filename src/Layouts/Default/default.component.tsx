@@ -15,9 +15,7 @@ function DefaultLayout() {
       <Header />
 
       <main className={styles.main}>
-        <div className={styles.main_container}>
-          <Outlet />
-        </div>
+        <Outlet />
       </main>
     </Fragment>
   );

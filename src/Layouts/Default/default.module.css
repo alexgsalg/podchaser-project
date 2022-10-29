@@ -1,9 +1,5 @@
 .main {
   width: 100%;
-  padding: 0 1.25rem;
 }
 
-.main_container {
-  composes: general_container from './src/index.css';
-  padding: 2rem 0;
-}
+
