@@ -1,5 +1,9 @@
 {
   "name": "podchaser-project",
+  "author": {
+    "name": "Alex Salgado"
+  },
+  "description": "Podchaser front-end project for development test",
   "private": true,
   "version": "0.0.0",
   "type": "module",
