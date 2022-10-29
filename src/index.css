@@ -1,0 +1,69 @@
+@font-face {
+  font-family: 'Avalon';
+  src: local('Avalon'), url(./assets/fonts/Avalon.woff) format('woff');
+  src: local('Avalon'), url(./assets/fonts/Avalon.ttf) format('ttf');
+}
+@font-face {
+  font-family: 'Avalon-bold';
+  src: local('Avalon-bold'), url(./assets/fonts/Avalon-Medium-Bold.woff) format('woff');
+  src: local('Avalon-bold'), url(./assets/fonts/Avalon-Medium-Bold.ttf) format('ttf');
+}
+
+:root {
+  /* Font */
+  --font-default: 'Avalon-bold', Avenir, Helvetica, Arial, sans-serif;
+  --font-bold: 'Avalon-bold', Avenir, Helvetica, Arial, sans-seri;
+  font-family: var(--font-default);
+  font-size: 1rem;
+  line-height: 1.6em;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+  /* Primary Colors */
+  --orange: hsl(26, 100%, 55%);
+  --orange-light: hsl(25, 100%, 94%);
+
+  /* Neutral Colors */
+  --blue-darker: hsl(220, 13%, 13%);
+  --blue-grayish-dark: hsl(219, 9%, 45%);
+  --blue-grayish: hsl(220, 14%, 75%);
+  --blue-grayish-light: hsl(223, 64%, 98%);
+  --blue-grayish-opacity: hsla(220, 14%, 75%, 0.5);
+  --white: hsl(0, 0%, 100%);
+  --black: hsl(0, 0%, 0%);
+  --black-opacity: hsla(0, 0%, 0%, 0.75);
+}
+
+/* Helper Classes */
+.flex_Jend_Acenter {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.flex_Jcenter_Acenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+img {
+  max-width: 100%;
+}
