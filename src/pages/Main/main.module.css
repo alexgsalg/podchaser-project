@@ -1,0 +1,12 @@
+.section_main {
+  padding: 3rem 2rem
+}
+
+.main_wrapper {
+  composes: general_container from '../../index.css';
+
+  display: grid;
+  grid-template-columns: 8fr 4fr;
+  gap: var(--gutter-lg);
+}
+

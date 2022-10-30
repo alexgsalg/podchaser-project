@@ -1,0 +1,17 @@
+.heading_block {
+  composes: flex_Jstart_Acenter from '../../index.css';
+  gap: var(--gutter-sm);
+}
+
+.heading_block_info {
+  flex: 1;
+}
+
+.heading_block__title {
+  font: 700 3rem/1em Avalon;
+  margin-bottom: var(--gutter-md);
+}
+
+.heading_block__subtext {
+  font: 400 1.25rem/1.75rem "Avalon-Book";
+}

@@ -16,6 +16,8 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
+    "@tanstack/react-query": "^4.13.4",
+    "axios": "^1.1.3",
     "eslint": "^8.26.0",
     "prettier": "^2.7.1",
     "react": "^18.2.0",

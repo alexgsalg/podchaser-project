@@ -4,8 +4,7 @@
 }
 
 .header_wrapper {
-  max-width: 71.25rem;
-  margin-inline: auto;
+  composes: general_container from '../../index.css';
   line-height: 1em;
 }
 
