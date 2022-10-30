@@ -15,10 +15,11 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
+    "plugins": [{ "name": "typescript-plugin-css-modules" }],
     "types": ["node"],
     "paths": {
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src", "src/components", "src/_types_/custom.d.ts"]
+  "include": ["src", "src/components", "src/_types_/custom.d.ts", "src/_types_/styles.d.ts"]
 }

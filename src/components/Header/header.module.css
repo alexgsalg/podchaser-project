@@ -1,0 +1,14 @@
+.main_header {
+  padding: 1.25rem 2rem ;
+  background-image: linear-gradient(to right, var(--purple), var(--blue-dark));
+}
+
+.header_wrapper {
+  max-width: 71.25rem;
+  margin-inline: auto;
+  line-height: 1em;
+}
+
+.header__logo {
+  max-width: 12.25rem;
+}
