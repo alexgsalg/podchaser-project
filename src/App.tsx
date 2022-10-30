@@ -10,7 +10,14 @@ import MainPage from './pages/Main/main.page';
 // style
 
 // Create a client
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      refetchOnReconnect: false,
+    },
+  },
+});
 
 // lazy load
 const SinglePoscast = lazy(() => import('./pages/SinglePodcast/single-podcast.page'));

@@ -4,10 +4,11 @@ import { Outlet } from 'react-router-dom';
 // components
 // images
 // style
+import styles from './default.module.css';
 
 const DefaultLayout = (): JSX.Element => {
   return (
-    <main className='main_Layout'>
+    <main className={styles.main_Layout}>
       <Outlet />
     </main>
   );

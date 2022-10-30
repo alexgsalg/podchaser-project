@@ -36,6 +36,7 @@
 
   /* Neutral Colors */
   --white: hsl(0, 0%, 100%);
+  --gray-light: hsl(217, 10%, 84%);
   --black: hsl(0, 0%, 0%);
   --black-opacity: hsla(0, 0%, 0%, 0.75);
   
@@ -46,6 +47,7 @@
   --bp-desktop-lg: 71.25rem;
   /* --bp-desktop-xl: 75rem; */
 
+  --gutter-xs: .375rem;
   --gutter-sm: .75rem;
   --gutter-md: 1.25rem;
   --gutter-lg: 2.5rem;

@@ -14,12 +14,15 @@ const PodcastItem: FC<PodcastItemType> = (podcast): JSX.Element => {
   const uploadDate = useDateFormat(updated_at);
   return (
     <article className={styles.podcast_card}>
-      <img src={image_url} alt='' />
+      <picture className={styles.podcast_card__thumbnail}>
+        <img src={image_url} alt={`Podcast ${title}`} />
+      </picture>
       <div className={styles.podcast_card_info}>
         <h3 className={styles.podcast_card__title}>{title}</h3>
-        <div className='podcast_card_terms'>
+        <div className={styles.podcast_card_terms}>
           <span className={styles.podcast_card__upload}>{uploadDate}</span>
-          <p className={styles.podcast_card__description}>{description}</p>
+          <span className={styles.podcast_card__divisor}></span>
+          <span className={styles.podcast_card__description}>{description}</span>
         </div>
       </div>
     </article>

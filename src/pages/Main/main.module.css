@@ -10,3 +10,6 @@
   gap: var(--gutter-lg);
 }
 
+.grid_article {
+  max-width: 55vw;
+}

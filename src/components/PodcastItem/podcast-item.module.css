@@ -1,17 +1,54 @@
-.heading_block {
-  composes: flex_Jstart_Acenter from '../../index.css';
-  gap: var(--gutter-sm);
+.podcast_card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  padding: .5rem;
+  border-radius: 0.25rem;
+  border: 1px solid var(--gray-light);
 }
 
-.heading_block_info {
-  flex: 1;
+.podcast_card__thumbnail {
+  flex-shrink: 0;
+  width: 5rem;
+  height: 5rem;
+  object-fit: cover;
+  overflow: hidden;
 }
 
-.heading_block__title {
-  font: 700 3rem/1em Avalon;
-  margin-bottom: var(--gutter-md);
+.podcast_card__thumbnail img {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.25rem;
 }
 
-.heading_block__subtext {
-  font: 400 1.25rem/1.75rem "Avalon-Book";
+.podcast_card__title {
+  font: 700 1rem/1em Avalon;
+  margin-bottom: var(--gutter-xs);
+}
+
+.podcast_card_terms {
+  display: grid;
+  grid-template-columns: min-content min-content 0.9fr;
+  width: 100%;
+  gap: var(--gutter-xs);
+  font: 400 1rem/1rem "Avalon-Book";
+}
+
+.podcast_card_terms > .podcast_card__upload {
+  display: block;
+  width: max-content;
+  font: inherit;
+}
+
+.podcast_card__divisor {
+  
+}
+
+.podcast_card__description {
+  max-width: 100%;
+  font: inherit;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
