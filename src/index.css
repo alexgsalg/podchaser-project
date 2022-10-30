@@ -1,16 +1,16 @@
 @font-face {
   font-family: 'Avalon-book';
   src: local('Avalon Book'), local('AvalonBook'),
-      url('./src/assets/fonts/Avalon-Book.woff') format('woff'),
-      url('./src/assets/fonts/Avalon-Book.ttf') format('truetype');
+      url('./assets/fonts/Avalon-Book.woff') format('woff'),
+      url('./assets/fonts/Avalon-Book.ttf') format('truetype');
   font-weight: normal;
 }
 
 @font-face {
   font-family: 'Avalon-bold';
   src: local('Avalon Bold'), local('AvalonBold'),
-      url('./src/assets/fonts/Avalon-Bold.woff') format('woff'),
-      url('./src/assets/fonts/Avalon-Bold.ttf') format('truetype');
+      url('./assets/fonts/Avalon-Bold.woff') format('woff'),
+      url('./assets/fonts/Avalon-Bold.ttf') format('truetype');
   font-weight: 600;
 }
 
