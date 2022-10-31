@@ -1,5 +1,7 @@
 // plugins
+import useFetchPodcasts from '../../hooks/useFetchPodcasts';
 import { useQuery } from '@tanstack/react-query';
+import { useNavigate } from 'react-router-dom';
 // imports
 import { PodcastItemType } from '../../models/podcast.model';
 import PodcastItem from '../PodcastItem/podcast-item.component';
@@ -9,16 +11,14 @@ import PodcastItem from '../PodcastItem/podcast-item.component';
 import styles from './podcast-list.module.css';
 
 const PodcastList = (): JSX.Element => {
-  const uri = 'https://api.podchaser.com/';
-  const fetchPodcasts = (): Promise<PodcastItemType[]> => {
-    return fetch(`${uri}userlists/27998`)
-      .then((response) => response.json())
-      .then((getPodcastsList) => getPodcastsList.list)
-      .then((getPodcasts) => getPodcasts.items.sort((a: any, b: any) => a.position - b.position));
-  };
+  const navigate = useNavigate();
 
-  const { data: podcasts, isLoading, isError } = useQuery(['todos'], fetchPodcasts);
-  console.log(podcasts);
+  const { podcasts, isError, isLoading } = useFetchPodcasts('/userlists/27998');
+
+  const onPodcastClick = (id: number) => {
+    navigate(`/podcast/${id}`);
+    console.log('id: ', id);
+  };
 
   return (
     <div className={styles.podcastlist_grid}>
@@ -27,7 +27,9 @@ const PodcastList = (): JSX.Element => {
         : isError
         ? 'Error!'
         : podcasts
-        ? podcasts.map((podcast: PodcastItemType) => <PodcastItem {...podcast} key={podcast.id} />)
+        ? podcasts?.map((podcast: PodcastItemType) => (
+            <PodcastItem podcast={podcast} clickedPodcast={onPodcastClick} key={podcast.id} />
+          ))
         : null}
     </div>
   );

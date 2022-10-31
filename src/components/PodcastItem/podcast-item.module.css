@@ -6,6 +6,16 @@
   padding: .5rem;
   border-radius: 0.25rem;
   border: 1px solid var(--gray-light);
+  cursor: pointer;
+  transition: all ease-in 200ms;
+}
+
+.podcast_card:hover {
+  border-color: var(--purple);
+}
+
+.podcast_card:hover .podcast_card__thumbnail img {
+  transform: scale(1.05);
 }
 
 .podcast_card__thumbnail {
@@ -20,6 +30,7 @@
   width: 100%;
   height: 100%;
   border-radius: 0.25rem;
+  transition: all ease 200ms;
 }
 
 .podcast_card__title {

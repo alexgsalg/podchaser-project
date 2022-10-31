@@ -12,3 +12,8 @@ export interface PodcastItemType {
     rating: number;
   };
 }
+
+export interface PodcastItemProps {
+  podcast: PodcastItemType;
+  clickedPodcast: (id: number) => void;
+}
