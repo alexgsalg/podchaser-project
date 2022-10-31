@@ -7,11 +7,19 @@
 }
 
 @font-face {
+  font-family: 'Avalon';
+  src: local('Avalon'), local('Avalon'),
+      url('./assets/fonts/Avalon.woff') format('woff'),
+      url('./assets/fonts/Avalon.ttf') format('truetype');
+  font-weight: normal;
+}
+
+@font-face {
   font-family: 'Avalon-bold';
   src: local('Avalon Bold'), local('AvalonBold'),
       url('./assets/fonts/Avalon-Bold.woff') format('woff'),
       url('./assets/fonts/Avalon-Bold.ttf') format('truetype');
-  font-weight: 600;
+  font-weight: 700;
 }
 
 :root {
@@ -85,6 +93,14 @@
   align-items: center;
 }
 
+.dot_divisor {
+  display: inline-block;
+  width: .3125rem;
+  height: 0.3125rem;
+  align-self: center;
+  background-color: var(--black);
+  border-radius: 50%;
+}
 /* Reset */
 * {
   margin: 0;

@@ -1,12 +1,13 @@
 // plugins
+import { Fragment } from 'react';
 import { useParams } from 'react-router-dom';
 // imports
 import useFetchSinglePodcast from '../../hooks/useFetchSinglePodcast';
-import { Rating } from 'react-simple-star-rating';
-
+import { PodcastHeaderType } from '../../models/podcast.model';
 // components
 import PodcastList from '../../components/PodcastList/podcast-list.component';
 import Spinner from '../../components/Spinner/spinner.component';
+import PodcastHeader from '../../components/PodcastHeader/podcast-header.component';
 // images
 // style
 import styles from './single-podcast.module.css';
@@ -16,15 +17,13 @@ const SinglePodcast = (): JSX.Element => {
   const podcastId = params['id'] || '';
   const { podcast, isError, isLoading, refetchData } = useFetchSinglePodcast(podcastId);
 
-  //   title,
-  //   description,
-  //   image_url,
-  //   feed_url,
-  //   initial_rating,
-  //   rating,
-  //   rating_count,
-  //   number_of_episodes,
-
+  const headerData: PodcastHeaderType = {
+    title: podcast?.title,
+    image_url: podcast?.image_url,
+    initial_rating: podcast?.initial_rating,
+    rating: podcast?.rating,
+    number_of_episodes: podcast?.number_of_episodes,
+  };
   return (
     <section className={styles.section_podcast}>
       <div className={styles.podcast_wrapper}>
@@ -33,32 +32,34 @@ const SinglePodcast = (): JSX.Element => {
         ) : isError ? (
           'Error!'
         ) : podcast ? (
-          <article className={styles.podcast_article}>
+          <Fragment>
             {/* header */}
-            <div className={styles.podcast_header}>
-              <picture className={styles.podcast_header__thumbnail}>
-                <img src={podcast?.image_url} alt={`Podcast ${podcast.title}`} />
-              </picture>
-              <div className={styles.podcast_header_info}>
-                <h3 className={styles.podcast_header__title}>{podcast?.title}</h3>
-                <p className={styles.podcast_header__total_episodes}>
-                  A podcast with {podcast?.number_of_episodes} episodes
-                </p>
-                <Rating
-                  allowFraction
-                  readonly
-                  initialValue={podcast?.initial_rating * 1}
-                  fillColor='hsl(336, 96%, 49%)'
-                />
+            <PodcastHeader {...(headerData as PodcastHeaderType)} />
+            <article className={styles.podcast_article}>
+              {/* Description */}
+              <div className={styles.podcast_content}>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: podcast?.description_sanitized as string,
+                  }}></div>
               </div>
-            </div>
-            {/* Description */}
-            <div className={styles.podcast_content}>
-              <div dangerouslySetInnerHTML={{ __html: podcast?.description_sanitized }}></div>
-            </div>
-            {/* podcast list */}
-            <PodcastList />
-          </article>
+              {/* podcast list */}
+              <PodcastList />
+            </article>
+            <aside className={styles.podcast_aside}>
+              <div className={styles.podcast_aside_actions}>
+                <button className={styles.aside_actions__button}>Follow</button>
+                <button className={`${styles.aside_actions__button} ${styles.button_secondary}`}>
+                  Rate
+                </button>
+                <div className={styles.aside_actions_footer}>
+                  <span>number followers</span>
+                  <span className={styles.aside_actions_footer_divisor}></span>
+                  <span>200 ratings</span>
+                </div>
+              </div>
+            </aside>
+          </Fragment>
         ) : null}
         <aside className='podcast_aside'></aside>
       </div>

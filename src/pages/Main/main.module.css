@@ -12,12 +12,15 @@
 }
 
 .grid_article {
-  max-width: 60vw;
   grid-column: 1/3;
 }
 
 @media screen and (max-width: 60rem){
   .main_wrapper {
-    /* grid-template-columns: 1fr; */
+    grid-template-columns: 1fr;
+  }
+
+  .grid_article {
+    grid-column: 1/2;
   }
 }

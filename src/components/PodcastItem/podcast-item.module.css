@@ -34,7 +34,7 @@
 }
 
 .podcast_card__title {
-  font: 700 1rem/1em Avalon;
+  font: 700 1rem/1em 'Avalon-Bold';
   margin-bottom: var(--gutter-xs);
 }
 
@@ -53,7 +53,7 @@
 }
 
 .podcast_card__divisor {
-  
+  composes: dot_divisor from '../../index.css';
 }
 
 .podcast_card__description {

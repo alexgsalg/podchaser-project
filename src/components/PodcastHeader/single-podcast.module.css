@@ -1,0 +1,32 @@
+
+.podcast_header {
+  composes: flex_Jstart_Acenter from '../../index.css';
+
+  grid-column: 1/4;
+  gap: 2.5rem;
+  width: 100%;
+  margin-bottom: 1.875rem;
+}
+
+.podcast_header__thumbnail {
+  flex-shrink: 0;
+  width: 12.5rem;
+  height: 12.5rem;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.podcast_header__thumbnail > img {
+  width: 100%;
+  height: 100%;
+}
+
+.podcast_header__title {
+  font: 700 3rem/1em 'Avalon-Bold';
+  margin-bottom: var(--gutter-sm);
+}
+
+.podcast_header__total_episodes {
+  font: 400 1.25rem/1.75rem "Avalon-Book";
+  margin-bottom: 1.75rem;
+}

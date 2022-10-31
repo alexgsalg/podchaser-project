@@ -8,7 +8,7 @@
 }
 
 .heading_block__title {
-  font: 700 3rem/1em Avalon;
+  font: 700 3rem/1em 'Avalon-Bold';
   margin-bottom: var(--gutter-md);
 }
 

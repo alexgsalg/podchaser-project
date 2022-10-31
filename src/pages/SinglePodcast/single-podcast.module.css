@@ -6,43 +6,15 @@
     composes: general_container from '../../index.css';
     
     display: grid;
-    grid-template-columns: 8fr 4fr;
-    gap: var(--gutter-lg);
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
+    gap: 0 8.125rem;
+    container-type: inline-size;
   }
   
   .podcast_article {
-    max-width: 55vw;
+    grid-column: 1/3;
   }
-  
-.podcast_header {
-  composes: flex_Jstart_Acenter from '../../index.css';
-
-  gap: 2.5rem;
-  margin-bottom: 1.875rem;
-}
-
-.podcast_header__thumbnail {
-  flex-shrink: 0;
-  width: 12.5rem;
-  height: 12.5rem;
-  object-fit: cover;
-  overflow: hidden;
-}
-
-.podcast_header__thumbnail > img {
-  width: 100%;
-  height: 100%;
-}
-
-.podcast_header__title {
-  font: 700 3rem/1em Avalon;
-  margin-bottom: var(--gutter-sm);
-}
-
-.podcast_header__total_episodes {
-  font: 400 1.25rem/1.75rem "Avalon-Book";
-  margin-bottom: 1.75rem;
-}
 
 .podcast_content {
   position: relative;
@@ -69,4 +41,66 @@
   width: 100%;
   height: 3.4375rem;
   background-image: linear-gradient(to top, var(--white), transparent);
+}
+
+.podcast_aside {
+  height: fit-content;
+  padding: 1rem 1rem 1.25rem;
+  border: 1px solid var(--gray-light);
+  border-radius: 2.5rem 2.5rem 0.5rem 0.5rem;
+}
+
+.aside_actions__button {
+  width: 100%;
+  margin-bottom: 0.9375rem;
+  padding: 0.8125rem;
+  background: var(--pink);
+  color: var(--white);
+  font-family: 'Avalon-Bold';
+  font-size: 1.5rem;
+  font-weight: 700;
+  border: 1px solid var(--pink);
+  border-radius: 28px;
+  cursor: pointer;
+  transition: all ease 250ms;
+}
+
+.aside_actions__button:hover {
+  background: var(--purple);
+  border: 1px solid var(--purple);
+}
+
+.button_secondary {
+  background: var(--white);
+  color: var(--black);
+  border: 1px solid var(--gray-light);
+}
+
+
+.aside_actions__button.button_secondary:hover {
+  background: var(--gray-light);
+  border: 1px solid var(--gray-light)
+}
+
+.aside_actions_footer{
+  composes: flex_Jcenter_Acenter from '../../index.css';
+
+  gap: 0.3125rem;
+  font-family: 'Avalon-Bold';
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.aside_actions_footer_divisor {
+  composes: dot_divisor from '../../index.css';
+}
+
+@media screen and (max-width: 60rem){
+  .podcast_wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .podcast_article {
+    grid-column: 1/4;
+  }
 }
