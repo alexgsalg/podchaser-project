@@ -1,9 +1,10 @@
 // plugins
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import { useParams } from 'react-router-dom';
 // imports
 import useFetchSinglePodcast from '../../hooks/useFetchSinglePodcast';
 import { PodcastHeaderType } from '../../models/podcast.model';
+import { Rating } from 'react-simple-star-rating';
 // components
 import PodcastList from '../../components/PodcastList/podcast-list.component';
 import Spinner from '../../components/Spinner/spinner.component';
@@ -13,10 +14,28 @@ import PodcastHeader from '../../components/PodcastHeader/podcast-header.compone
 import styles from './single-podcast.module.css';
 
 const SinglePodcast = (): JSX.Element => {
+  const [rating, setRating] = useState<number>(0);
+  const [rateHovering, setRateHovering] = useState<boolean>(false);
   const params = useParams();
+
   const podcastId = params['id'] || '';
   const { podcast, isError, isLoading, refetchData } = useFetchSinglePodcast(podcastId);
 
+  // catch Rating value
+  const handleRating = (rate: number) => {
+    setRating(rate);
+  };
+
+  // catch Rating value
+  const handleRateBtnHover = () => {
+    setRateHovering(true);
+  };
+
+  const handleRateBtnOut = () => {
+    setRateHovering(false);
+  };
+
+  // format data for header component
   const headerData: PodcastHeaderType = {
     title: podcast?.title,
     image_url: podcast?.image_url,
@@ -49,8 +68,22 @@ const SinglePodcast = (): JSX.Element => {
             <aside className={styles.podcast_aside}>
               <div className={styles.podcast_aside_actions}>
                 <button className={styles.aside_actions__button}>Follow</button>
-                <button className={`${styles.aside_actions__button} ${styles.button_secondary}`}>
-                  Rate
+                <button
+                  className={`${styles.aside_actions__button} ${styles.button_secondary}`}
+                  onMouseOver={handleRateBtnHover}
+                  onMouseOut={handleRateBtnOut}>
+                  {!rateHovering ? (
+                    'Rate'
+                  ) : (
+                    <Rating
+                      allowFraction
+                      initialValue={0}
+                      size={24}
+                      fillColor='hsla(0, 0%, 0%, 0.75)'
+                      emptyColor='hsl(0, 0%, 100%)'
+                      onClick={handleRating}
+                    />
+                  )}
                 </button>
                 <div className={styles.aside_actions_footer}>
                   <span>number followers</span>

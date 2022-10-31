@@ -82,6 +82,12 @@
   border: 1px solid var(--gray-light)
 }
 
+.aside_actions__button > .aside_actions__button {
+  height: 24px;
+  position: relative;
+  top: -3px;
+}
+
 .aside_actions_footer{
   composes: flex_Jcenter_Acenter from '../../index.css';
 
