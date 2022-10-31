@@ -6,6 +6,7 @@ import { Rating } from 'react-simple-star-rating';
 
 // components
 import PodcastList from '../../components/PodcastList/podcast-list.component';
+import Spinner from '../../components/Spinner/spinner.component';
 // images
 // style
 import styles from './single-podcast.module.css';
@@ -13,9 +14,8 @@ import styles from './single-podcast.module.css';
 const SinglePodcast = (): JSX.Element => {
   const params = useParams();
   const podcastId = params['id'] || '';
-  const { podcast, isError, isLoading } = useFetchSinglePodcast(podcastId);
+  const { podcast, isError, isLoading, refetchData } = useFetchSinglePodcast(podcastId);
 
-  // const {
   //   title,
   //   description,
   //   image_url,
@@ -24,13 +24,12 @@ const SinglePodcast = (): JSX.Element => {
   //   rating,
   //   rating_count,
   //   number_of_episodes,
-  // } = podcast;
 
   return (
     <section className={styles.section_podcast}>
       <div className={styles.podcast_wrapper}>
         {isLoading ? (
-          'Loading...'
+          <Spinner />
         ) : isError ? (
           'Error!'
         ) : podcast ? (
@@ -65,6 +64,6 @@ const SinglePodcast = (): JSX.Element => {
       </div>
     </section>
   );
-};
+};;
 
 export default SinglePodcast;

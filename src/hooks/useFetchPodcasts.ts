@@ -5,7 +5,7 @@ interface UseFetchPodcastsType {
   podcasts: PodcastItemType[] | undefined;
   isError: boolean;
   isLoading: boolean;
-  refetch: () => Promise<any>;
+  refetchData: () => Promise<any> | void;
 }
 
 const useFetchPodcasts = (routeParam: string): UseFetchPodcastsType => {
@@ -23,6 +23,11 @@ const useFetchPodcasts = (routeParam: string): UseFetchPodcastsType => {
       .then((getPodcasts) => getPodcasts.items.sort((a: any, b: any) => a.position - b.position));
     return response;
   });
-  return { podcasts, isError, isLoading, refetch };
+
+  const refetchData = () => {
+    refetch();
+  };
+
+  return { podcasts, isError, isLoading, refetchData };
 };
 export default useFetchPodcasts;

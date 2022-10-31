@@ -44,7 +44,7 @@
   --bp-phone: 30rem;
   --bp-tablet: 48rem;
   --bp-desktop-md: 64rem;
-  --bp-desktop-lg: 71.25rem;
+  --bp-desktop-lg: 77.5rem;
   /* --bp-desktop-xl: 75rem; */
 
   --gutter-xs: .375rem;
@@ -52,7 +52,6 @@
   --gutter-md: 1.25rem;
   --gutter-lg: 2.5rem;
 
-  --grid-1: calc( (100% - ( var(--gutter-sm) * 11 ) ) / 12 );
 }
 
 /* Helper Classes */
