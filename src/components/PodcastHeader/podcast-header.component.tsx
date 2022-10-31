@@ -5,7 +5,7 @@ import { Rating } from 'react-simple-star-rating';
 // components
 // images
 // style
-import styles from './single-podcast.module.css';
+import styles from './podcast-header.module.css';
 
 const PodcastHeader = (data: PodcastHeaderType): JSX.Element => {
   return (

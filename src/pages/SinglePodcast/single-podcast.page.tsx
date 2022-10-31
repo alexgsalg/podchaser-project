@@ -2,7 +2,7 @@
 import { Fragment, useState } from 'react';
 import { useParams } from 'react-router-dom';
 // imports
-import useFetchSinglePodcast from '../../hooks/useFetchSinglePodcast';
+import useFetchpodcast from '../../hooks/useFetchpodcast';
 import { PodcastHeaderType } from '../../models/podcast.model';
 import { Rating } from 'react-simple-star-rating';
 // components
@@ -13,13 +13,13 @@ import PodcastHeader from '../../components/PodcastHeader/podcast-header.compone
 // style
 import styles from './single-podcast.module.css';
 
-const SinglePodcast = (): JSX.Element => {
+const podcast = (): Promise<JSX.Element> => {
   const [rating, setRating] = useState<number>(0);
   const [rateHovering, setRateHovering] = useState<boolean>(false);
   const params = useParams();
 
   const podcastId = params['id'] || '';
-  const { podcast, isError, isLoading, refetchData } = useFetchSinglePodcast(podcastId);
+  const { podcast, isError, isLoading } = useFetchpodcast(podcastId);
 
   // catch Rating value
   const handleRating = (rate: number) => {
@@ -37,12 +37,21 @@ const SinglePodcast = (): JSX.Element => {
 
   // format data for header component
   const headerData: PodcastHeaderType = {
-    title: podcast?.title,
-    image_url: podcast?.image_url,
-    initial_rating: podcast?.initial_rating,
-    rating: podcast?.rating,
-    number_of_episodes: podcast?.number_of_episodes,
+    title: podcast?.title || '',
+    image_url: podcast?.image_url || '',
+    initial_rating: podcast?.initial_rating || '',
+    rating: podcast?.rating || '',
+    number_of_episodes: podcast?.number_of_episodes || '',
+    follower_count: podcast?.follower_count || 0,
+    review_count: podcast?.review_count || 0,
   };
+
+  // format folowers count
+  const followerTotal = (): string => {
+    const followers = podcast?.follower_count || 0;
+    return followers > 1000 ? `${followers}k followers` : `${followers} followers`;
+  };
+
   return (
     <section className={styles.section_podcast}>
       <div className={styles.podcast_wrapper}>
@@ -86,9 +95,9 @@ const SinglePodcast = (): JSX.Element => {
                   )}
                 </button>
                 <div className={styles.aside_actions_footer}>
-                  <span>number followers</span>
+                  <span>{followerTotal.toString()}</span>
                   <span className={styles.aside_actions_footer_divisor}></span>
-                  <span>200 ratings</span>
+                  <span>{podcast.rating_count} ratings</span>
                 </div>
               </div>
             </aside>
@@ -98,6 +107,6 @@ const SinglePodcast = (): JSX.Element => {
       </div>
     </section>
   );
-};;
+};
 
-export default SinglePodcast;
+export default podcast;

@@ -10,27 +10,37 @@ export interface PodcastItemType {
     description: string;
     title: string;
     rating: number;
+    follower_count: number;
+    review_count: number;
   };
 }
 
 export interface PodcastItemProps {
   podcast: PodcastItemType;
-  clickedPodcast: (id: number) => void;
+  clickedPodcast: (id: number) => any;
 }
 
 export type SinglePodcastType = {
-  title: string | undefined;
-  description: string | undefined;
-  description_sanitized: string | undefined;
-  image_url: string | undefined;
-  feed_url: string | undefined;
-  initial_rating: string | undefined;
-  rating: string | undefined;
-  rating_count: string | undefined;
-  number_of_episodes: string | undefined;
+  title: string;
+  description: string;
+  description_sanitized: string;
+  image_url: string;
+  feed_url: string;
+  initial_rating: string;
+  rating: string;
+  rating_count: string;
+  number_of_episodes: string;
+  review_count: number;
+  follower_count: number;
 };
 
 export type PodcastHeaderType = Pick<
   SinglePodcastType,
-  'title' | 'image_url' | 'initial_rating' | 'rating' | 'number_of_episodes'
+  | 'title'
+  | 'image_url'
+  | 'initial_rating'
+  | 'rating'
+  | 'number_of_episodes'
+  | 'follower_count'
+  | 'review_count'
 >;
