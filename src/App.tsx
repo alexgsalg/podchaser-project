@@ -7,6 +7,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Header from './components/Header/header.component';
 import DefaultLayout from './layouts/Default/default.layout';
 import MainPage from './pages/Main/main.page';
+import SinglePoscast from './pages/SinglePodcast/single-podcast.page';
 // style
 
 // Create a client
@@ -14,28 +15,23 @@ const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       refetchOnWindowFocus: false,
-      refetchOnReconnect: false,
+      // refetchOnReconnect: false,
     },
   },
 });
-
-// lazy load
-const SinglePoscast = lazy(() => import('./pages/SinglePodcast/single-podcast.page'));
 
 function App() {
   return (
     <BrowserRouter>
       <Header />
-      <Suspense fallback={<MainPage />}>
-        <QueryClientProvider client={queryClient}>
-          <Routes>
-            <Route element={<DefaultLayout />}>
-              <Route index element={<MainPage />} />
-              <Route path='/podcast/:id' element={<SinglePoscast />} />
-            </Route>
-          </Routes>
-        </QueryClientProvider>
-      </Suspense>
+      <QueryClientProvider client={queryClient}>
+        <Routes>
+          <Route element={<DefaultLayout />}>
+            <Route index element={<MainPage />} />
+            <Route path='/podcast/:id' element={<SinglePoscast />} />
+          </Route>
+        </Routes>
+      </QueryClientProvider>
     </BrowserRouter>
   );
 }

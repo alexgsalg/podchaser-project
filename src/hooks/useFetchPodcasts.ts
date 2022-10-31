@@ -5,6 +5,7 @@ interface UseFetchPodcastsType {
   podcasts: PodcastItemType[] | undefined;
   isError: boolean;
   isLoading: boolean;
+  refetch: () => Promise<any>;
 }
 
 const useFetchPodcasts = (routeParam: string): UseFetchPodcastsType => {
@@ -14,6 +15,7 @@ const useFetchPodcasts = (routeParam: string): UseFetchPodcastsType => {
     data: podcasts,
     isLoading,
     isError,
+    refetch,
   } = useQuery(['podcasts'], async () => {
     const response: Promise<PodcastItemType[]> = fetch(new URL(routeParam, baseUrl))
       .then((response) => response.json())
@@ -21,6 +23,6 @@ const useFetchPodcasts = (routeParam: string): UseFetchPodcastsType => {
       .then((getPodcasts) => getPodcasts.items.sort((a: any, b: any) => a.position - b.position));
     return response;
   });
-  return { podcasts, isError, isLoading };
+  return { podcasts, isError, isLoading, refetch };
 };
 export default useFetchPodcasts;

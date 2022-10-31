@@ -10,4 +10,5 @@
 
 .header__logo {
   max-width: 12.25rem;
+  cursor: pointer;
 }

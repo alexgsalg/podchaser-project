@@ -1,6 +1,5 @@
 // plugins
 import useFetchPodcasts from '../../hooks/useFetchPodcasts';
-import { useQuery } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 // imports
 import { PodcastItemType } from '../../models/podcast.model';
@@ -13,10 +12,12 @@ import styles from './podcast-list.module.css';
 const PodcastList = (): JSX.Element => {
   const navigate = useNavigate();
 
-  const { podcasts, isError, isLoading } = useFetchPodcasts('/userlists/27998');
+  const { podcasts, isError, isLoading, refetch } = useFetchPodcasts('/userlists/27998');
 
   const onPodcastClick = (id: number) => {
     navigate(`/podcast/${id}`);
+    // TODO: refetch data and reloa the page
+    refetch();
     console.log('id: ', id);
   };
 
@@ -28,7 +29,11 @@ const PodcastList = (): JSX.Element => {
         ? 'Error!'
         : podcasts
         ? podcasts?.map((podcast: PodcastItemType) => (
-            <PodcastItem podcast={podcast} clickedPodcast={onPodcastClick} key={podcast.id} />
+            <PodcastItem
+              podcast={podcast}
+              clickedPodcast={onPodcastClick}
+              key={podcast.entity.id}
+            />
           ))
         : null}
     </div>

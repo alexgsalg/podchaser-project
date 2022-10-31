@@ -8,10 +8,10 @@ import useDateFormat from '../../hooks/useDateFormat';
 import styles from './podcast-item.module.css';
 
 const PodcastItem = ({ podcast, clickedPodcast }: PodcastItemProps): JSX.Element => {
-  const { image_url, title, description, updated_at } = podcast.entity;
+  const { id, image_url, title, description, updated_at } = podcast.entity;
   const uploadDate = useDateFormat(updated_at);
 
-  const handleClickedPodcast = () => clickedPodcast(podcast.id);
+  const handleClickedPodcast = () => clickedPodcast(id);
 
   return (
     <article className={styles.podcast_card} onClick={handleClickedPodcast}>
