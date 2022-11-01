@@ -1,5 +1,4 @@
 // plugins
-import useFetchPodcasts from '../../hooks/useFetchPodcasts';
 import { useNavigate } from 'react-router-dom';
 // imports
 import { PodcastItemType } from '../../models/podcast.model';
@@ -10,10 +9,12 @@ import Spinner from '../Spinner/spinner.component';
 // style
 import styles from './podcast-list.module.css';
 
-const PodcastList = (): JSX.Element => {
+const PodcastList = (props: {
+  podList: PodcastItemType[];
+  isError: boolean;
+  isLoading: boolean;
+}): JSX.Element => {
   const navigate = useNavigate();
-
-  const { podcasts, isError, isLoading, refetchData } = useFetchPodcasts('/userlists/27998');
 
   const onPodcastClick = (id: number) => {
     navigate(`/podcast/${id}`);
@@ -21,19 +22,15 @@ const PodcastList = (): JSX.Element => {
 
   return (
     <div className={styles.podcastlist_grid}>
-      {isLoading
-        ? <Spinner />
-        : isError
-        ? 'Error!'
-        : podcasts
-        ? podcasts?.map((podcast: PodcastItemType) => (
-            <PodcastItem
-              podcast={podcast}
-              clickedPodcast={onPodcastClick}
-              key={podcast.entity.id}
-            />
-          ))
-        : null}
+      {props.isLoading ? (
+        <Spinner />
+      ) : props.isError ? (
+        'Error!'
+      ) : props.podList ? (
+        props.podList?.map((podcast: PodcastItemType) => (
+          <PodcastItem podcast={podcast} clickedPodcast={onPodcastClick} key={podcast.entity.id} />
+        ))
+      ) : null}
     </div>
   );
 };

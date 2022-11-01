@@ -1,8 +1,8 @@
 // plugins
-import { Fragment, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 // imports
-import useFetchpodcast from '../../hooks/useFetchpodcast';
+import useFetchSinglePodcast from '../../hooks/useFetchSinglePodcast';
 import { PodcastHeaderType } from '../../models/podcast.model';
 import { Rating } from 'react-simple-star-rating';
 // components
@@ -13,14 +13,22 @@ import PodcastHeader from '../../components/PodcastHeader/podcast-header.compone
 // style
 import styles from './single-podcast.module.css';
 
-const podcast = (): Promise<JSX.Element> => {
+const podcast = (): JSX.Element => {
+  const [followerTotal, setFollowerTotal] = useState<string | number>(0);
   const [rating, setRating] = useState<number>(0);
   const [rateHovering, setRateHovering] = useState<boolean>(false);
   const params = useParams();
 
   const podcastId = params['id'] || '';
-  const { podcast, isError, isLoading } = useFetchpodcast(podcastId);
+  const { podcast, isError, isLoading } = useFetchSinglePodcast(podcastId);
 
+  // format folowers count
+  useEffect(() => {
+    const followers = Math.floor(Math.random() * (100000 - 0 + 1) + 1);
+    const formatedFollowers =
+      followers > 1000 ? followers.toString().slice(0, -3) + 'k' : followers;
+    setFollowerTotal(formatedFollowers);
+  }, []);
   // catch Rating value
   const handleRating = (rate: number) => {
     setRating(rate);
@@ -37,19 +45,23 @@ const podcast = (): Promise<JSX.Element> => {
 
   // format data for header component
   const headerData: PodcastHeaderType = {
-    title: podcast?.title || '',
-    image_url: podcast?.image_url || '',
-    initial_rating: podcast?.initial_rating || '',
-    rating: podcast?.rating || '',
-    number_of_episodes: podcast?.number_of_episodes || '',
-    follower_count: podcast?.follower_count || 0,
-    review_count: podcast?.review_count || 0,
+    title: podcast?.title,
+    image_url: podcast?.image_url,
+    initial_rating: podcast?.initial_rating,
+    rating: podcast?.rating,
+    number_of_episodes: podcast?.number_of_episodes,
+    review_count: podcast?.review_count,
   };
 
-  // format folowers count
-  const followerTotal = (): string => {
-    const followers = podcast?.follower_count || 0;
-    return followers > 1000 ? `${followers}k followers` : `${followers} followers`;
+  // format last episode
+  const lastEpisode = {
+    entity: {
+      id: podcast?.latest_episode?.id as number,
+      title: podcast?.latest_episode?.title as string,
+      description: podcast?.description as string,
+      image_url: podcast?.image_url as string,
+      updated_at: podcast?.latest_episode?.air_date,
+    },
   };
 
   return (
@@ -72,7 +84,9 @@ const podcast = (): Promise<JSX.Element> => {
                   }}></div>
               </div>
               {/* podcast list */}
-              <PodcastList />
+              {/* TODO: text and styles */}
+              <h2>Latest Episodes</h2>
+              <PodcastList {...{ podList: [lastEpisode], isError, isLoading }} />
             </article>
             <aside className={styles.podcast_aside}>
               <div className={styles.podcast_aside_actions}>
@@ -95,9 +109,9 @@ const podcast = (): Promise<JSX.Element> => {
                   )}
                 </button>
                 <div className={styles.aside_actions_footer}>
-                  <span>{followerTotal.toString()}</span>
+                  <span>{followerTotal}</span>
                   <span className={styles.aside_actions_footer_divisor}></span>
-                  <span>{podcast.rating_count} ratings</span>
+                  <span>{podcast?.rating_count} ratings</span>
                 </div>
               </div>
             </aside>

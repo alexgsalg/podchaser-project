@@ -1,4 +1,3 @@
-import { SinglePodcastType } from '../models/podcast.model';
 import { useQuery } from '@tanstack/react-query';
 
 const useFetchSinglePodcast = (id: string) => {
@@ -9,11 +8,10 @@ const useFetchSinglePodcast = (id: string) => {
     isLoading,
     isError,
     refetch,
-  } = useQuery([id], async () => {
-    const response = await fetch(new URL(`/podcasts/${id}`, baseUrl))
+  } = useQuery([id], () => {
+    return fetch(new URL(`/podcasts/${id}`, baseUrl))
       .then((response) => response.json())
-      .then((data: Promise<SinglePodcastType>) => data);
-    return response || {};
+      .then((data) => data);
   });
 
   const refetchData = () => {
