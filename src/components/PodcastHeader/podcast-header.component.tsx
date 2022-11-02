@@ -10,11 +10,13 @@ import styles from './podcast-header.module.css';
 const PodcastHeader = (data: PodcastHeaderType): JSX.Element => {
   return (
     <header className={styles.podcast_header}>
-      <picture className={styles.podcast_header__thumbnail}>
+      <picture className={styles.podcast_header__thumbnail} data-id='podcast_header__thumbnail'>
         <img src={data?.image_url} alt={`Podcast ${data?.title}`} />
       </picture>
       <div className={styles.podcast_header_info}>
-        <h3 className={styles.podcast_header__title}>{data?.title}</h3>
+        <h3 className={styles.podcast_header__title} data-id='podcast_header__title'>
+          {data?.title}
+        </h3>
         <p className={styles.podcast_header__total_episodes}>
           A podcast with {data?.number_of_episodes} episodes
         </p>

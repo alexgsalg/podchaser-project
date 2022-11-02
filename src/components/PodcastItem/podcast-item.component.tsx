@@ -14,16 +14,25 @@ const PodcastItem = ({ podcast, clickedPodcast }: PodcastItemProps): JSX.Element
   const handleClickedPodcast = () => clickedPodcast(id);
 
   return (
-    <article className={styles.podcast_card} onClick={handleClickedPodcast}>
+    <article
+      className={styles.podcast_card}
+      onClick={handleClickedPodcast}
+      data-id={`podcast_card-${id}`}>
       <picture className={styles.podcast_card__thumbnail}>
         <img src={image_url} alt={`Podcast ${title}`} />
       </picture>
       <div className={styles.podcast_card_info}>
-        <h3 className={styles.podcast_card__title}>{title}</h3>
+        <h3 className={styles.podcast_card__title} data-id='card_title'>
+          {title}
+        </h3>
         <div className={styles.podcast_card_terms}>
-          <span className={styles.podcast_card__upload}>{uploadDate}</span>
+          <span className={styles.podcast_card__upload} data-id='card_upload_date'>
+            {uploadDate}
+          </span>
           <span className={styles.podcast_card__divisor}></span>
-          <span className={styles.podcast_card__description}>{description}</span>
+          <span className={styles.podcast_card__description} data-id='card__description'>
+            {description}
+          </span>
         </div>
       </div>
     </article>

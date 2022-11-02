@@ -17,6 +17,7 @@ const Header = (): JSX.Element => {
       <div className={styles.header_wrapper}>
         <img
           src={Logo}
+          id='logo'
           alt='Podchaser logo'
           className={styles.header__logo}
           onClick={onLogoClick}

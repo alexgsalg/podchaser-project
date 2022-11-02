@@ -11,6 +11,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "jest",
+    "coverage": "yarn cypress open",
     "lint": "eslint .",
     "lint:fix": "eslint --fix",
     "eject": "react-scripts eject"

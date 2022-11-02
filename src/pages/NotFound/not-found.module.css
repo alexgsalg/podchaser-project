@@ -1,0 +1,31 @@
+.section_notfound {
+  padding: 3rem 2rem
+}
+
+.notfound_wrapper {
+  composes: general_container from '../../index.css';
+
+  text-align: center;
+}
+
+
+.notfound__button {
+  width: 100%;
+  max-width: 18.75rem;
+  margin-bottom: 0.9375rem;
+  padding: 0.8125rem;
+  background: var(--pink);
+  color: var(--white);
+  font-family: 'Avalon-Bold';
+  font-size: 1.5rem;
+  font-weight: 700;
+  border: 1px solid var(--pink);
+  border-radius: 28px;
+  cursor: pointer;
+  transition: all ease 250ms;
+}
+
+.notfound__button:hover {
+  background: var(--purple);
+  border: 1px solid var(--purple);
+}

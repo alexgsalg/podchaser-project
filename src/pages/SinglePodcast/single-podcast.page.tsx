@@ -1,5 +1,5 @@
 // plugins
-import { Fragment, useEffect, useMemo, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 // imports
 import useFetchSinglePodcast from '../../hooks/useFetchSinglePodcast';
@@ -72,10 +72,10 @@ const podcast = (): JSX.Element => {
                 <div
                   dangerouslySetInnerHTML={{
                     __html: podcast?.description_sanitized as string,
-                  }}></div>
+                  }}
+                  data-id='podcast_description'></div>
               </div>
               {/* podcast list */}
-              {/* TODO: text and styles */}
               <h2 className={styles.podcast_latest__title}>Recent Episodes</h2>
               <PodcastList {...{ podList: [lastEpisode], isError, isLoading }} />
             </article>
@@ -100,9 +100,13 @@ const podcast = (): JSX.Element => {
                   )}
                 </button>
                 <div className={styles.aside_actions_footer}>
-                  <span>{`${followerTotal} followers`}</span>
+                  <span>
+                    <span data-id='podcast_followers'>{followerTotal}</span> followers
+                  </span>
                   <span className={styles.aside_actions_footer_divisor}></span>
-                  <span>{podcast?.rating_count} ratings</span>
+                  <span>
+                    <span data-id='podcast_rating'>{podcast?.rating_count}</span> ratings
+                  </span>
                 </div>
               </div>
             </aside>
