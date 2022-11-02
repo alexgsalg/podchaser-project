@@ -2,7 +2,7 @@
 .podcast_header {
   composes: flex_Jstart_Acenter from '../../index.css';
 
-  grid-column: 1/4;
+  grid-area: header;
   gap: 2.5rem;
   width: 100%;
   margin-bottom: 1.875rem;

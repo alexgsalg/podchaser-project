@@ -4,16 +4,18 @@
 
 .podcast_wrapper {
     composes: general_container from '../../index.css';
+    container-type: inline-size;
     
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto auto;
-    gap: 0 8.125rem;
-    container-type: inline-size;
+    grid-template-areas: 
+      "header header"
+      "content aside";
+    grid-template-columns: 1fr minmax(15.625rem ,18.75rem);
+    gap: 0 8%;
   }
   
   .podcast_article {
-    grid-column: 1/3;
+    grid-area: content;
   }
 
 .podcast_content {
@@ -43,7 +45,13 @@
   background-image: linear-gradient(to top, var(--white), transparent);
 }
 
+.podcast_latest__title {
+  font: 700 1.5rem/1.75rem "Avalon-Bold";
+  margin-bottom: 1.375rem;
+}
+
 .podcast_aside {
+  grid-area: aside;
   height: fit-content;
   padding: 1rem 1rem 1.25rem;
   border: 1px solid var(--gray-light);
@@ -82,11 +90,12 @@
   border: 1px solid var(--gray-light)
 }
 
-.aside_actions__button > .aside_actions__button {
+.aside_actions__button > span {
   height: 24px;
   position: relative;
   top: -3px;
 }
+
 
 .aside_actions_footer{
   composes: flex_Jcenter_Acenter from '../../index.css';
@@ -101,12 +110,13 @@
   composes: dot_divisor from '../../index.css';
 }
 
-@media screen and (max-width: 60rem){
+@media screen and (max-width: 48rem){
   .podcast_wrapper {
+    grid-template-areas: 
+      "header"
+      "content" 
+      "aside";
     grid-template-columns: 1fr;
   }
 
-  .podcast_article {
-    grid-column: 1/4;
-  }
 }

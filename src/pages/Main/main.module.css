@@ -6,21 +6,24 @@
   composes: general_container from '../../index.css';
 
   display: grid;
-  grid-template-columns: repeat(3, minmax(18.125rem, 1fr));
-  grid-template-rows: auto auto;
-  gap: 8.125rem;
+  grid-template-areas: 
+      "header header"
+      "content aside";
+  grid-template-columns: 1fr 18.75rem;
+  gap: 0 8%;
 }
 
-.grid_article {
-  grid-column: 1/3;
+.main_article {
+  grid-area: content;
 }
 
-@media screen and (max-width: 60rem){
+@media screen and (max-width: 48rem){
   .main_wrapper {
+    grid-template-areas: 
+      "header"
+      "content" 
+      "aside";
     grid-template-columns: 1fr;
   }
 
-  .grid_article {
-    grid-column: 1/2;
-  }
 }

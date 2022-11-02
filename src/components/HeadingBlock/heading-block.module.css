@@ -1,5 +1,7 @@
 .heading_block {
   composes: flex_Jstart_Acenter from '../../index.css';
+
+  grid-area: header;
   gap: var(--gutter-sm);
 }
 

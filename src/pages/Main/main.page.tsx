@@ -14,12 +14,12 @@ const MainPage = (): JSX.Element => {
   return (
     <section className={styles.section_main}>
       <div className={styles.main_wrapper}>
-        <article className={styles.grid_article}>
-          <HeadingBlock
-            title='All Podcasts'
-            subtext='Browse the details of every podcast, ever.'
-            spaceBottom='lg'
-          />
+        <HeadingBlock
+          title='All Podcasts'
+          subtext='Browse the details of every podcast, ever.'
+          spaceBottom='lg'
+        />
+        <article className={styles.main_article}>
           <PodcastList {...{ podList: podcasts, isError, isLoading }} />
         </article>
       </div>

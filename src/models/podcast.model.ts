@@ -35,3 +35,5 @@ export type PodcastHeaderType = Pick<
   SinglePodcastType,
   'title' | 'image_url' | 'initial_rating' | 'rating' | 'number_of_episodes' | 'review_count'
 >;
+
+export type LatestPodcastType = Pick<PodcastItemType, 'entity'>;

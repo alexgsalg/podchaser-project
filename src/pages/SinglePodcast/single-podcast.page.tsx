@@ -1,9 +1,9 @@
 // plugins
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useEffect, useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
 // imports
 import useFetchSinglePodcast from '../../hooks/useFetchSinglePodcast';
-import { PodcastHeaderType } from '../../models/podcast.model';
+import { LatestPodcastType, PodcastHeaderType } from '../../models/podcast.model';
 import { Rating } from 'react-simple-star-rating';
 // components
 import PodcastList from '../../components/PodcastList/podcast-list.component';
@@ -15,7 +15,6 @@ import styles from './single-podcast.module.css';
 
 const podcast = (): JSX.Element => {
   const [followerTotal, setFollowerTotal] = useState<string | number>(0);
-  const [rating, setRating] = useState<number>(0);
   const [rateHovering, setRateHovering] = useState<boolean>(false);
   const params = useParams();
 
@@ -29,18 +28,10 @@ const podcast = (): JSX.Element => {
       followers > 1000 ? followers.toString().slice(0, -3) + 'k' : followers;
     setFollowerTotal(formatedFollowers);
   }, []);
-  // catch Rating value
-  const handleRating = (rate: number) => {
-    setRating(rate);
-  };
 
-  // catch Rating value
-  const handleRateBtnHover = () => {
-    setRateHovering(true);
-  };
-
-  const handleRateBtnOut = () => {
-    setRateHovering(false);
+  // // catch Rating value
+  const handleRateBtnHover = (state: boolean) => {
+    setRateHovering(state);
   };
 
   // format data for header component
@@ -54,7 +45,7 @@ const podcast = (): JSX.Element => {
   };
 
   // format last episode
-  const lastEpisode = {
+  const lastEpisode: LatestPodcastType = {
     entity: {
       id: podcast?.latest_episode?.id as number,
       title: podcast?.latest_episode?.title as string,
@@ -85,7 +76,7 @@ const podcast = (): JSX.Element => {
               </div>
               {/* podcast list */}
               {/* TODO: text and styles */}
-              <h2>Latest Episodes</h2>
+              <h2 className={styles.podcast_latest__title}>Recent Episodes</h2>
               <PodcastList {...{ podList: [lastEpisode], isError, isLoading }} />
             </article>
             <aside className={styles.podcast_aside}>
@@ -93,8 +84,8 @@ const podcast = (): JSX.Element => {
                 <button className={styles.aside_actions__button}>Follow</button>
                 <button
                   className={`${styles.aside_actions__button} ${styles.button_secondary}`}
-                  onMouseOver={handleRateBtnHover}
-                  onMouseOut={handleRateBtnOut}>
+                  onMouseOver={() => handleRateBtnHover(true)}
+                  onMouseOut={() => handleRateBtnHover(false)}>
                   {!rateHovering ? (
                     'Rate'
                   ) : (
@@ -102,14 +93,14 @@ const podcast = (): JSX.Element => {
                       allowFraction
                       initialValue={0}
                       size={24}
+                      className={styles.btn_rating}
                       fillColor='hsla(0, 0%, 0%, 0.75)'
                       emptyColor='hsl(0, 0%, 100%)'
-                      onClick={handleRating}
                     />
                   )}
                 </button>
                 <div className={styles.aside_actions_footer}>
-                  <span>{followerTotal}</span>
+                  <span>{`${followerTotal} followers`}</span>
                   <span className={styles.aside_actions_footer_divisor}></span>
                   <span>{podcast?.rating_count} ratings</span>
                 </div>
