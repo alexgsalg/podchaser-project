@@ -1,6 +1,31 @@
-# Getting Started with Create React App
+# Getting Started with Podchaser project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is not a generic project that you are used to was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and was created using **Typescript** and **CSS Modules** (used for speed propuses. Styled Components were my second choice) and Tested using **Cypress.io** latest version.
+
+The testing based on the desired deadline was a *end-to-end* test.\
+I chose to use it because the project is not large enough to have data floating \
+around so with the end-to-end method I can track the data through the application \
+making sure that the correct information is available and is on the right place.
+
+## Project structure
+
+The project folders implemented is the following:
+
+- \_mock_ : Holds any mock file used for testing.
+- \_types_ : Holds typescript declaration files.
+- assets : Store the project assets such as images and fonts.
+- components : Every element that I think it could be reused inside a component or page.]
+- hooks : Custom react hooks including the ones used for **fetching** and **transforming** data
+- layouts : I creates this folder so the project can have multiple layouts without having to repeat structures
+- models : A folder that stores typescript types using inside the project _(could be better I admit)_
+- pages : files that contain route pages so its easier to find and manage using routes
+
+The components are created with the following pattern:
+_FolderName_ > _file-name.filetype.(tsx.css)_
+
+The folders uses Camelcase syntax and files are dash separated and have their \
+file type before the extension. For example for pages **HomePage** > **home-page.page.tsx**\
+and CSS have **module** as file type.
 
 ## Available Scripts
 
@@ -8,39 +33,22 @@ In the project directory, you can run:
 
 ### `yarn start`
 
-Runs the app in the development mode.\
+Like aways runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `yarn test`
+### `yarn coverage`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Launches the Cypress.io test runner which open the Cypress software. Select the \
+**E2E Testing** (left option).
 
 ### `yarn build`
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+and bla bla bla you know the rest.
 
 ### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+**Note: this is a one-way operation. Once you `eject`, you can’t go back... soo we don't do that here!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
