@@ -11,7 +11,8 @@ const useFetchSinglePodcast = (id: string) => {
   } = useQuery([id], () => {
     return fetch(new URL(`/podcasts/${id}`, baseUrl))
       .then((response) => response.json())
-      .then((data) => data);
+      .then((data) => data)
+      .catch((error) => error);
   });
 
   const refetchData = () => {

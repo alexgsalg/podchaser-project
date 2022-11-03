@@ -9,6 +9,7 @@ import { Rating } from 'react-simple-star-rating';
 import PodcastList from '../../components/PodcastList/podcast-list.component';
 import Spinner from '../../components/Spinner/spinner.component';
 import PodcastHeader from '../../components/PodcastHeader/podcast-header.component';
+import HeadingBlock from '../../components/HeadingBlock/heading-block.component';
 // images
 // style
 import styles from './single-podcast.module.css';
@@ -59,9 +60,14 @@ const podcast = (): JSX.Element => {
     <section className={styles.section_podcast}>
       <div className={styles.podcast_wrapper}>
         {isLoading ? (
+          // loading
           <Spinner />
-        ) : isError ? (
-          'Error!'
+        ) : podcast.status_code === 404 ? (
+          // has some error
+          <HeadingBlock
+            title='404 error. Hmm... Something went wrong'
+            subtext='Should this page show something? Check your internet connection and try again'
+          />
         ) : podcast ? (
           <Fragment>
             {/* header */}
@@ -112,7 +118,6 @@ const podcast = (): JSX.Element => {
             </aside>
           </Fragment>
         ) : null}
-        <aside className='podcast_aside'></aside>
       </div>
     </section>
   );

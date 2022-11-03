@@ -24,7 +24,8 @@ const HeadingBlock = ({
   return (
     <header
       className={styles.heading_block}
-      style={{ marginBottom: `var(--gutter-${spaceBottom})` }}>
+      style={{ marginBottom: `var(--gutter-${spaceBottom})` }}
+      data-id='header_block'>
       {sideImage ? sideImage : null}
       <div className={styles.heading_block_info}>
         <h1 className={styles.heading_block__title}>{title}</h1>

@@ -1,6 +1,10 @@
 describe('Test if generic content is showing', () => {
-  // before(() => {
-  // });
+  /**
+   * No before method use so the tests are executed in sequence
+   * if one fail the rest should too, that whay ew know where stasted
+   * and we don't need to redo the cy.get('#podcastlist_grid').children()
+   * for every test due to the scope of the project
+   */
 
   // global variables
   let podcastId;

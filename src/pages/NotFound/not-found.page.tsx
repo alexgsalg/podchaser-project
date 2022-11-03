@@ -15,7 +15,7 @@ const NotFound = (): JSX.Element => {
       <div className={styles.notfound_wrapper}>
         <HeadingBlock
           title='This page does not exist'
-          subtext='Sould this page show something?'
+          subtext='Should this page show something?'
           spaceBottom='lg'
         />
         <button className={styles.notfound__button} onClick={toNotFound}>
