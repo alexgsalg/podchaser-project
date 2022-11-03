@@ -1,11 +1,12 @@
 # Getting Started with Podchaser project
 
-This project is not a generic project that you are used to was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and was created using **Typescript** and **CSS Modules** (used for speed propuses. Styled Components were my second choice) and Tested using **Cypress.io** latest version.
+This project is not a generic project that you are used to was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and was created using **Typescript** and **CSS Modules** (used for speed proposes. Styled Components were my second choice) and Tested using **Cypress.io** latest version.
 
-The testing based on the desired deadline was a *end-to-end* test.\
+The testing based on the desired deadline was an *end-to-end* test.\
 I chose to use it because the project is not large enough to have data floating \
 around so with the end-to-end method I can track the data through the application \
-making sure that the correct information is available and is on the right place.
+making sure that the correct information is available and is in the right place.
+I also did some failure tests to see if it was getting the right error.
 
 ## Project structure
 
@@ -14,18 +15,18 @@ The project folders implemented is the following:
 - \_mock_ : Holds any mock file used for testing.
 - \_types_ : Holds typescript declaration files.
 - assets : Store the project assets such as images and fonts.
-- components : Every element that I think it could be reused inside a component or page.]
-- hooks : Custom react hooks including the ones used for **fetching** and **transforming** data
+- components : Every element that I think it could be reused inside a component or page.
+- hooks : Custom react hooks including the ones used fo **fetching** and **transforming** data
 - layouts : I creates this folder so the project can have multiple layouts without having to repeat structures
-- models : A folder that stores typescript types using inside the project _(could be better I admit)_
-- pages : files that contain route pages so its easier to find and manage using routes
+- models : A folder that stores typescript types used inside the project _(could be better I admit)_
+- pages : files that contain route pages so it is easier to find and manage using routes
 
 The components are created with the following pattern:
 _FolderName_ > _file-name.filetype.(tsx.css)_
 
-The folders uses Camelcase syntax and files are dash separated and have their \
+The folders use CamelCase syntax and files are dash separated and have their \
 file type before the extension. For example for pages **HomePage** > **home-page.page.tsx**\
-and CSS have **module** as file type.
+and CSS have **module** as the file type.
 
 ## Available Scripts
 
